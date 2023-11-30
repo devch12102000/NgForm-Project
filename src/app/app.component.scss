@@ -1,0 +1,55 @@
+.form-container{
+    text-align: center;
+    .form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        form{
+            text-align: left;
+            label{
+                text-align: left;
+                display: block;
+            }
+            input{
+                width: 100%;
+            }
+        }
+    }
+}
+.table-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:1rem 4rem;
+    table{
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        thead{
+            background-color: #dddddd;
+
+            tr{
+                &:nth-child(even) {
+                    background-color: #dddddd;
+                  }
+                th{
+                    border: 1px solid #dddddd;
+                    text-align: left;
+                    padding: 8px;
+                }
+            }
+        }
+        tbody{
+            tr{
+                td{
+                    border: 1px solid #dddddd;
+                    text-align: left;
+                    padding: 8px;
+                }
+                &:nth-child(even) {
+                    background-color: #dddddd;
+                  }
+            }
+        }
+    }
+}
