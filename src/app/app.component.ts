@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -13,10 +13,12 @@ export class AppComponent {
   modalData:any={};
   showModal:boolean = false;
   editDataIndex:number = -99;
+  
 
   getData(data:NgForm) {
     this.userData = [...this.userData, data];
     this.dataHeaders = [...Object.keys(data),"actions"];
+    console.log("da", data)
   }
 
   deleteRow(index:number){
@@ -27,7 +29,7 @@ export class AppComponent {
     const rowData = this.userData[index]
     this.modalData = rowData;
     this.editDataIndex = index;
-    this.showModal = true
+    this.showModal = true;
   }
 
   setEditModalRecord(data:NgForm) {
