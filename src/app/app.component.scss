@@ -43,8 +43,9 @@
             tr{
                 &:nth-child(even) {
                     background-color: #dddddd;
-                  }
+                }
                 th{
+                    width: 33.33%;
                     border: 1px solid #dddddd;
                     text-align: left;
                     padding: 8px;
@@ -54,6 +55,7 @@
         tbody{
             tr{
                 td{
+                    // width: 33.33%;
                     border: 1px solid #dddddd;
                     text-align: left;
                     padding: 8px;
@@ -61,6 +63,56 @@
                 &:nth-child(even) {
                     background-color: #dddddd;
                   }
+                .button-container{
+                    display: flex;
+                    justify-content: flex-end;
+                    button{
+                        width: 80px;
+                    }
+                }
+            }
+        }
+    }
+}
+.edit-record-modal{
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    // padding: 2rem;
+    background-color: white;
+    box-shadow: 0 0 5px black;
+    border: 1px solid white;
+    border-radius: 10px;
+    z-index: 99;
+    width: 50vw;
+    height: 90vh;
+    text-align: center;
+    .form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        form{
+            text-align: left;
+            label{
+                text-align: left;
+                display: block;
+            }
+            input{
+                width: 100%;
+            }
+            .label-container{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                label{
+                    width: 50%;
+                }
+                input{
+                    // height: 14px;
+                    width: 50%;
+                }
             }
         }
     }

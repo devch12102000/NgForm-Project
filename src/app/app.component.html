@@ -11,6 +11,7 @@
       <label for="address">Address: </label>
       <input type="text" ngModel name="Address" required/>
 
+
       <br />
       <br />
 
@@ -47,6 +48,55 @@
     </form>
   </div>
 </div>
+
+<div class="edit-record-modal" *ngIf="showModal">
+  <div class="form">
+    <form #editModalForm="ngForm" (ngSubmit)="setEditModalRecord(editModalForm.value)">
+      <h1>Edit Data</h1>
+
+      <label for="name">Name: </label>
+      <input type="text" ngModel name="Name" required/>
+      <br />
+
+      <label for="address">Address: </label>
+      <input type="text" ngModel name="Address" required/>
+
+
+      <br />
+      <br />
+
+
+      <label for="Gender">Specify your gender:</label>
+      <br />
+      <div class="label-container">
+        <label for="male">Male</label><input type="radio" ngModel name="Gender" value="male" />
+      </div>
+      <div class="label-container">
+        <label for="female">Female</label><input type="radio" ngModel name="Gender" value="female" />
+      </div>
+      <br />
+      
+      <label for="vehicle">What do you have?</label>
+      <br />
+      <div class="label-container">
+        <label for="Bike">bike</label><input type="checkbox"  ngModel name="vehicle" value="Bike" />
+      </div>
+
+      <div class="label-container">
+        <label for="Car">car</label><input type="checkbox"  ngModel name="vehicle" value="Car" />
+      </div>
+      <br />
+      <div >
+        <label for="uploadfile">Upload your Adhaar Card:</label>
+        <input type="file" ngModel name="uploadfile" accept="image/png, image/jpeg" >
+      </div>
+        <br />
+        <br />
+
+
+      <button>Submit</button>
+    </form>
+  </div></div>
 
 <div class="table-container">
   <table>
