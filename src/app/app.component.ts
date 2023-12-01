@@ -13,6 +13,10 @@ export class AppComponent {
 
   getData(data:NgForm) {
     this.userData = [...this.userData, data]; 
-    this.dataHeaders = Object.keys(data);
+    this.dataHeaders = [...Object.keys(data), "actions"];
+  }
+
+  deleteRow(index:number){
+    this.userData.splice(index,1) //splice(from what index, how many elements to delete)
   }
 }

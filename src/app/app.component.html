@@ -24,15 +24,21 @@
         <th *ngFor="let header of dataHeaders">
           {{header}}
         </th>
+        <!-- <th>
+          actions
+        </th> -->
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let x of userData">
+      <tr *ngFor="let x of userData, let i = index">
         <td>
           {{x.Name}}
         </td>
         <td>
           {{x.Address}}
+        </td>
+        <td>
+          <button (click)="deleteRow(i);">Delete</button>
         </td>
       </tr>
     </tbody>
