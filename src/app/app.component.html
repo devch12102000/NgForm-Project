@@ -19,7 +19,7 @@
 
 <div class="table-container">
   <table>
-    <thead>
+    <thead *ngIf="userData.length>0">
       <tr>
         <th *ngFor="let header of dataHeaders">
           {{header}}
