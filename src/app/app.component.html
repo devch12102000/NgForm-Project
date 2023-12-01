@@ -37,7 +37,7 @@
       <br />
       <div >
         <label for="uploadfile">Upload your Adhaar Card:</label>
-        <input type="file" name="uploadfile" accept="image/png, image/jpeg" >
+        <input type="file" ngModel name="uploadfile" accept="image/png, image/jpeg" >
       </div>
         <br />
         <br />
@@ -74,7 +74,9 @@
         <td>
           {{x.vehicle}}
         </td>
-
+        <td>
+          {{x.uploadfile}}
+        </td>
         <td>
           <button (click)="deleteRow(i);">Delete</button>
           <button (click)="editRow(i);">Edit</button>

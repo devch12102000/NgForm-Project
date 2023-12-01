@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
 export class AppComponent {
   title = 'NgForm-Project';
   userData:any =[];
-  dataHeaders:any=[]
+  dataHeaders:any=[];
 
   getData(data:NgForm) {
     this.userData = [...this.userData, data];
