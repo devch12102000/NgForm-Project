@@ -10,6 +10,7 @@ import { FormBuilder, FormsModule, NgForm } from '@angular/forms';
 export class AppComponent implements OnInit{
   //@ViewChild('basicForm') basicForm: NgForm;
   title = 'NgForm-Project';
+  tempData:any ={};
   userData:any =[];
   dataHeaders:any=[];
   //modal:any={};
@@ -31,12 +32,11 @@ ngOnInit(): void {
 //   basicForm.reset()}
 
   getData(data:NgForm) {
-    debugger
-    this.userData = [...this.userData, data];
-    this.dataHeaders = [...Object.keys(data),"actions"];
-    //this.basicForm.form.value.reset();
-    console.log("da", data)
-
+    const completeData = {...this.tempData, ...data}
+    console.log([...this.userData, completeData])
+    this.userData = [...this.userData, completeData];
+    this.dataHeaders = [...Object.keys(completeData),"actions"];
+    // this.basicForm.form.value.reset();
   }
 
   // getData(data:NgForm) {
@@ -60,7 +60,6 @@ ngOnInit(): void {
     this.modalData = rowData;
     this.editDataIndex = index;
     this.showModal = true;
-    console.log(this.modalData.Name)
   }
 
   setEditModalRecord(data:NgForm) {
@@ -75,18 +74,18 @@ ngOnInit(): void {
     this.showModal = false;
   }
 
-
-
-  NextPersonalDetail(){
+  NextPersonalDetail(data: NgForm){
     this.personaldetail=false;
     this.professionaldetail=true; //takes to professional page 2
     this.identitydetail=false;
+    this.tempData = data;
   }
 
-  NextProfessionalDetail(){
+  NextProfessionalDetail(data: NgForm){
     this.personaldetail=false;
     this.professionaldetail=false;
     this.identitydetail=true; //takes to identity page 3
+    this.tempData = {...this.tempData, ...data};
   }
 
   BackProfessionalDetail(){
