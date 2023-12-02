@@ -1,132 +1,220 @@
 <div class="form-container">
   <h1>My Form</h1>
   <div class="form">
-
     <form #basicForm="ngForm" (ngSubmit)="getData(basicForm.value)">
 
-      <label for="name">Name: </label>
-      <input type="text" ngModel name="Name" required/>
-      <br />
+<!-- PAGE 1 -->
+      <div class="form-wrpaper active" *ngIf="personaldetail">
+        <label for="name">Name: </label>
+        <input type="text" [(ngModel)]="userData.Name" name="Name" required />
+        <br />
 
-      <label for="address">Address: </label>
-      <input type="text" ngModel name="Address" required/>
+        <label for="address">Address: </label>
+        <input type="text" [(ngModel)]="userData.Address" name="Address" required />
 
-
-      <br />
-      <br />
-
-
-      <label for="Gender">Specify your gender:</label>
-      <br />
-      <div class="label-container">
-        <label for="male">Male</label><input type="radio" ngModel name="Gender" value="male" />
+        <br /><br />
+        <button type="button" class="btn register" (click)="NextPersonalDetail()" id="btnpersonaldetail" >
+          Next
+        </button>
       </div>
-      <div class="label-container">
-        <label for="female">Female</label><input type="radio" ngModel name="Gender" value="female" />
-      </div>
-      <br />
-      
-      <div class="label-container">
-        <label for="cars">Select Role: </label>
 
-        <select ngModel name="Role">
-          <option value="admin">Admin</option>
-          <option value="ginner">Ginner</option>
-          <option value="spinner">Spinner</option>
-          <option value="farmer">Farmer</option>
-        </select>
+<!-- PAGE 2 -->
+      <div class="form-wrpaper" *ngIf="professionaldetail">
+        <label for="Gender">Specify your gender:</label>
+        <br />
+        <div class="label-container">
+          <label for="male">Male</label>
+          <input type="radio" [(ngModel)]="userData.Gender" name="Gender" value="male" />
+        </div>
+        <div class="label-container">
+          <label for="female">Female</label>
+          <input type="radio" [(ngModel)]="userData.Gender" name="Gender" value="female" />
+        </div>
+        <br />
+
+        <div class="label-container">
+          <label for="cars">Select Role: </label>
+
+          <select [(ngModel)]="userData.Role" name="Role">
+            <option value="admin">Admin</option>
+            <option value="ginner">Ginner</option>
+            <option value="spinner">Spinner</option>
+            <option value="farmer">Farmer</option>
+          </select>
+        </div>
+        <br />
+        <button
+          type="button"
+          class="btn register"
+          (click)="BackProfessionalDetail()"
+          id="btnprofessionaldetail"
+        >
+          Back
+        </button>
+        &nbsp;
+        <button
+          type="button"
+          class="btn register"
+          (click)="NextProfessionalDetail()"
+          id="btnprofessionaldetail"
+        >
+          Next
+        </button>
+      </div>
+
+<!-- PAGE 3 -->
+      <div class="form-wrpaper" *ngIf="identitydetail">
+        <label for="Citizenship">Are you Resident of India?</label>
+        <br />
+        <div class="label-container">
+          <label for="yes">Yes</label>
+          <input
+            type="radio"
+            [(ngModel)]="userData.Citizenship"
+            name="Citizenship"
+            value="Yes"
+          />
         </div>
 
+        <div class="label-container">
+          <label for="no">No</label>
+          <input
+            type="radio"
+            [(ngModel)]="userData.Citizenship"
+            name="Citizenship"
+            value="No"
+          />
+        </div>
         <br />
-      
-      <label for="vehicle">What do you have?</label>
-      <br />
-      <div class="label-container">
-        <label for="Bike">bike</label><input type="checkbox"  ngModel name="vehicle" value="Bike" />
-      </div>
+        <div>
+          <label for="uploadfile">Upload your Adhaar Card:</label>
+          <input
+            type="file"
+            [(ngModel)]="userData.uploadfile"
+            name="uploadfile"
+            accept="image/png, image/jpeg"
+          />
+        </div>
+        <br /><br />
 
-      <div class="label-container">
-        <label for="Car">car</label><input type="checkbox"  ngModel name="vehicle" value="Car" />
-      </div>
-      <br />
-      <div >
-        <label for="uploadfile">Upload your Adhaar Card:</label>
-        <input type="file" ngModel name="uploadfile" accept="image/png, image/jpeg" >
-      </div>
-        <br />
-        <br />
+        <button
+          type="button"
+          class="btn register"
+          (click)="BackIdentityDetail()"
+          id="btnprofessionaldetail"
+        >
+          Back
+        </button>
+        &nbsp;
 
-
+<!-- FORM SUBMIT -->
       <button>Submit</button>
+    </div>
     </form>
   </div>
 </div>
 
+<!-- EDIT BUTTON POP UP -->
 <div class="edit-record-modal" *ngIf="showModal">
   <div class="form">
-    <form #editModalForm="ngForm" (ngSubmit)="setEditModalRecord(editModalForm.value)">
+    <form
+      #editModalForm="ngForm"
+      (ngSubmit)="setEditModalRecord(editModalForm.value)"
+    >
       <h1>Edit Data</h1>
 
       <label for="name">Name: </label>
-      <input type="text" ngModel name="Name" required/>
+      <input type="text" [(ngModel)]="modalData.Name" name="Name" required />
       <br />
 
       <label for="address">Address: </label>
-      <input type="text" ngModel name="Address" required/>
+      <input
+        type="text"
+        [(ngModel)]="modalData.Address"
+        name="Address"
+        required
+      />
       <br />
-
 
       <label for="Gender">Specify your gender:</label>
       <br />
       <div class="label-container">
-        <label for="male">Male</label><input type="radio" ngModel name="Gender" value="male" />
+        <label for="male">Male</label>
+        <input
+          type="radio"
+          [(ngModel)]="modalData.Gender"
+          name="Gender"
+          value="male"
+        />
       </div>
       <div class="label-container">
-        <label for="female">Female</label><input type="radio" ngModel name="Gender" value="female" />
+        <label for="female">Female</label>
+        <input
+          type="radio"
+          [(ngModel)]="modalData.Gender"
+          name="Gender"
+          value="female"
+        />
       </div>
       <br />
       <div class="label-container">
         <label for="cars">Select Role: </label>
 
-        <select ngModel name="Role">
+        <select [(ngModel)]="modalData.Role" name="Role">
           <option value="admin">Admin</option>
           <option value="ginner">Ginner</option>
           <option value="spinner">Spinner</option>
           <option value="farmer">Farmer</option>
         </select>
-        </div>
+      </div>
 
-        <br />
-      
-      
-      <label for="vehicle">What do you have?</label>
+      <br />
+
+      <label for="Citizenship">Are you Resident of India?</label>
       <br />
       <div class="label-container">
-        <label for="Bike">bike</label><input type="checkbox"  ngModel name="vehicle" value="Bike" />
+        <label for="yes">Yes</label>
+        <input
+          type="radio"
+          [(ngModel)]="modalData.Citizenship"
+          name="Citizenship"
+          value="yes"
+        />
       </div>
 
       <div class="label-container">
-        <label for="Car">car</label><input type="checkbox"  ngModel name="vehicle" value="Car" />
+        <label for="no">No</label>
+        <input
+          type="radio"
+          [(ngModel)]="modalData.Citizenship"
+          name="Citizenship"
+          value="no"
+        />
       </div>
       <br />
-      <div >
+      <div>
         <label for="uploadfile">Upload your Adhaar Card:</label>
-        <input type="file" ngModel name="uploadfile" accept="image/png, image/jpeg" >
+        <input
+          type="file"
+          [(ngModel)]="modalData.uploadfile"
+          name="uploadfile"
+          accept="image/png, image/jpeg"
+        />
       </div>
-        <br />
-
+      <br />
 
       <button>Save</button>
       <button (click)="closeModal()">Close</button>
     </form>
-  </div></div>
+  </div>
+</div>
 
 <div class="table-container">
   <table>
-    <thead *ngIf="userData.length>0">
+    <thead *ngIf="userData.length > 0">
       <tr>
         <th *ngFor="let header of dataHeaders">
-          {{header}}
+          {{ header }}
         </th>
         <!-- <th>
           actions
@@ -134,28 +222,28 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let x of userData, let i = index">
+      <tr *ngFor="let x of userData; let i = index">
         <td>
-          {{x.Name}}
+          {{ x.Name }}
         </td>
         <td>
-          {{x.Address}}
+          {{ x.Address }}
         </td>
         <td>
-          {{x.Gender}}
+          {{ x.Gender }}
         </td>
         <td>
-          {{x.Role}}
+          {{ x.Role }}
         </td>
         <td>
-          {{x.vehicle}}
+          {{ x.Citizenship }}
         </td>
         <td>
-          {{x.uploadfile}}
+          {{ x.uploadfile }}
         </td>
         <td>
-          <button (click)="deleteRow(i);">Delete</button>
-          <button (click)="editRow(i);">Edit</button>
+          <button (click)="deleteRow(i)">Delete</button>
+          <button (click)="editRow(i)">Edit</button>
         </td>
       </tr>
     </tbody>
