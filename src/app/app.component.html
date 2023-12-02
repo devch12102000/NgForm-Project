@@ -1,119 +1,123 @@
 <div class="form-container">
-  <h1>My Form</h1>
-  <div class="form">
-    <form #basicForm="ngForm" (ngSubmit)="getData(basicForm.value)">
-
-<!-- PAGE 1 -->
-      <div class="form-wrpaper active" *ngIf="personaldetail">
-        <label for="name">Name: </label>
-        <input type="text" [(ngModel)]="userData.Name" name="Name" required />
-        <br />
-
-        <label for="address">Address: </label>
-        <input type="text" [(ngModel)]="userData.Address" name="Address" required />
-
-        <br /><br />
-        <button type="button" class="btn register" (click)="NextPersonalDetail(basicForm.value)" id="btnpersonaldetail" >
-          Next
-        </button>
+  <div class="form-inner-div">
+      <h1>My Form</h1>
+      <div class="form">
+        <form #basicForm="ngForm" (ngSubmit)="getData(basicForm.value)">
+    
+    <!-- PAGE 1 -->
+          <div class="form-wrapper active" *ngIf="personaldetail">
+            <label for="name">Name: </label>
+            <input type="text" [(ngModel)]="userData.Name" name="Name" required />
+            <br />
+    
+            <label for="address">Address: </label>
+            <input type="text" [(ngModel)]="userData.Address" name="Address" required />
+    
+            <br /><br />
+            <button type="button" class="btn register" (click)="NextPersonalDetail(basicForm.value)" id="btnpersonaldetail" >
+              Next
+            </button>
+          </div>
+    
+    <!-- PAGE 2 -->
+          <div class="form-wrapper" *ngIf="professionaldetail">
+            <label for="Gender">Specify your gender:</label>
+            <br />
+            <div class="label-container">
+              <label for="male">Male:</label>
+              <input type="radio" [(ngModel)]="userData.Gender" name="Gender" value="male" />
+            </div>
+            <div class="label-container">
+              <label for="female">Female:</label>
+              <input type="radio" [(ngModel)]="userData.Gender" name="Gender" value="female" />
+            </div>
+            <br />
+    
+            <div class="label-container">
+              <label for="cars">Select Role: </label>
+    
+              <select [(ngModel)]="userData.Role" name="Role">
+                <option value="admin">Admin</option>
+                <option value="ginner">Ginner</option>
+                <option value="spinner">Spinner</option>
+                <option value="farmer">Farmer</option>
+              </select>
+            </div>
+            <br />
+            <button
+              type="button"
+              class="btn register"
+              (click)="BackProfessionalDetail()"
+              id="btnprofessionaldetail"
+            >
+              Back
+            </button>
+            &nbsp;
+            <button
+              type="button"
+              class="btn register"
+              (click)="NextProfessionalDetail(basicForm.value)"
+              id="btnprofessionaldetail"
+            >
+              Next
+            </button>
+          </div>
+    
+    <!-- PAGE 3 -->
+          <div class="form-wrapper" *ngIf="identitydetail">
+            <label for="Citizenship">Are you Resident of India?</label>
+            <br />
+            <div class="label-container">
+              <label for="yes">Yes</label>
+              <input
+                type="radio"
+                [(ngModel)]="userData.Citizenship"
+                name="Citizenship"
+                value="Yes"
+              />
+            </div>
+    
+            <div class="label-container">
+              <label for="no">No</label>
+              <input
+                type="radio"
+                [(ngModel)]="userData.Citizenship"
+                name="Citizenship"
+                value="No"
+              />
+            </div>
+            <br />
+            <div>
+              <label for="uploadfile">Upload your Adhaar Card:</label>
+              <input
+                type="file"
+                [(ngModel)]="userData.uploadfile"
+                name="uploadfile"
+                accept="image/png, image/jpeg"
+              />
+            </div>
+            <br /><br />
+    
+            <button
+              type="button"
+              class="btn register"
+              (click)="BackIdentityDetail()"
+              id="btnprofessionaldetail"
+            >
+              Back
+            </button>
+            &nbsp;
+    
+    <!-- FORM SUBMIT -->
+          <button>Submit</button>
+        </div>
+        </form>
       </div>
-
-<!-- PAGE 2 -->
-      <div class="form-wrpaper" *ngIf="professionaldetail">
-        <label for="Gender">Specify your gender:</label>
-        <br />
-        <div class="label-container">
-          <label for="male">Male</label>
-          <input type="radio" [(ngModel)]="userData.Gender" name="Gender" value="male" />
-        </div>
-        <div class="label-container">
-          <label for="female">Female</label>
-          <input type="radio" [(ngModel)]="userData.Gender" name="Gender" value="female" />
-        </div>
-        <br />
-
-        <div class="label-container">
-          <label for="cars">Select Role: </label>
-
-          <select [(ngModel)]="userData.Role" name="Role">
-            <option value="admin">Admin</option>
-            <option value="ginner">Ginner</option>
-            <option value="spinner">Spinner</option>
-            <option value="farmer">Farmer</option>
-          </select>
-        </div>
-        <br />
-        <button
-          type="button"
-          class="btn register"
-          (click)="BackProfessionalDetail()"
-          id="btnprofessionaldetail"
-        >
-          Back
-        </button>
-        &nbsp;
-        <button
-          type="button"
-          class="btn register"
-          (click)="NextProfessionalDetail(basicForm.value)"
-          id="btnprofessionaldetail"
-        >
-          Next
-        </button>
-      </div>
-
-<!-- PAGE 3 -->
-      <div class="form-wrpaper" *ngIf="identitydetail">
-        <label for="Citizenship">Are you Resident of India?</label>
-        <br />
-        <div class="label-container">
-          <label for="yes">Yes</label>
-          <input
-            type="radio"
-            [(ngModel)]="userData.Citizenship"
-            name="Citizenship"
-            value="Yes"
-          />
-        </div>
-
-        <div class="label-container">
-          <label for="no">No</label>
-          <input
-            type="radio"
-            [(ngModel)]="userData.Citizenship"
-            name="Citizenship"
-            value="No"
-          />
-        </div>
-        <br />
-        <div>
-          <label for="uploadfile">Upload your Adhaar Card:</label>
-          <input
-            type="file"
-            [(ngModel)]="userData.uploadfile"
-            name="uploadfile"
-            accept="image/png, image/jpeg"
-          />
-        </div>
-        <br /><br />
-
-        <button
-          type="button"
-          class="btn register"
-          (click)="BackIdentityDetail()"
-          id="btnprofessionaldetail"
-        >
-          Back
-        </button>
-        &nbsp;
-
-<!-- FORM SUBMIT -->
-      <button>Submit</button>
-    </div>
-    </form>
   </div>
 </div>
 
+
+  
 <!-- EDIT BUTTON POP UP -->
 <div class="edit-record-modal" *ngIf="showModal">
   <div class="form">

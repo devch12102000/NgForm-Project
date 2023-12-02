@@ -1,119 +1,132 @@
-.form-container{
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 55vh;
+  .form-inner-div {
     text-align: center;
-    .form{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        form{
+    background-color: rgb(206, 221, 226);
+    width: 50%;
+    border-radius: 4px;
+    padding: 2rem;
+    border: 0.2px solid #000;
+    // box-shadow: 0 0 0px #fff;
+  }
+    .form {
+      form {
+        text-align: left;
+        .form-wrapper {
+          padding: 2px 2rem;
+          label {
             text-align: left;
-            label{
-                text-align: left;
-                display: block;
+            display: block;
+          }
+          input {
+            width: 100%;
+          }
+          .label-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            label {
+              width: 50%;
             }
-            input{
-                width: 100%;
+            input {
+              // height: 14px;
+              width: 50%;
             }
-            .label-container{
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                label{
-                    width: 50%;
-                }
-                input{
-                    // height: 14px;
-                    width: 50%;
-                }
-            }
+          }
         }
+      }
     }
-}
-.table-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding:1rem 4rem;
-    table{
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-        thead{
-            background-color: #dddddd;
+  }
 
-            tr{
-                &:nth-child(even) {
-                    background-color: #dddddd;
-                }
-                th{
-                    width: 33.33%;
-                    border: 1px solid #dddddd;
-                    text-align: left;
-                    padding: 8px;
-                }
-            }
+.table-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 4rem;
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    thead {
+      background-color: #dddddd;
+
+      tr {
+        &:nth-child(even) {
+          background-color: #dddddd;
         }
-        tbody{
-            tr{
-                td{
-                    // width: 33.33%;
-                    border: 1px solid #dddddd;
-                    text-align: left;
-                    padding: 8px;
-                }
-                &:nth-child(even) {
-                    background-color: #dddddd;
-                  }
-                .button-container{
-                    display: flex;
-                    justify-content: flex-end;
-                    button{
-                        width: 80px;
-                    }
-                }
-            }
+        th {
+          width: 33.33%;
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
         }
+      }
     }
+    tbody {
+      tr {
+        td {
+          // width: 33.33%;
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        &:nth-child(even) {
+          background-color: #dddddd;
+        }
+        .button-container {
+          display: flex;
+          justify-content: flex-end;
+          button {
+            width: 80px;
+          }
+        }
+      }
+    }
+  }
 }
-.edit-record-modal{
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    // padding: 2rem;
-    background-color: white;
-    box-shadow: 0 0 5px black;
-    border: 1px solid white;
-    border-radius: 10px;
-    z-index: 99;
-    width: 50vw;
-    height: 90vh;
-    text-align: center;
-    .form{
+.edit-record-modal {
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  // padding: 2rem;
+  background-color: white;
+  box-shadow: 0 0 5px black;
+  border: 1px solid white;
+  border-radius: 10px;
+  z-index: 99;
+  width: 50vw;
+  height: 90vh;
+  text-align: center;
+  .form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    form {
+      text-align: left;
+      label {
+        text-align: left;
+        display: block;
+      }
+      input {
+        width: 100%;
+      }
+      .label-container {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
-        form{
-            text-align: left;
-            label{
-                text-align: left;
-                display: block;
-            }
-            input{
-                width: 100%;
-            }
-            .label-container{
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                label{
-                    width: 50%;
-                }
-                input{
-                    // height: 14px;
-                    width: 50%;
-                }
-            }
+        label {
+          width: 50%;
         }
+        input {
+          // height: 14px;
+          width: 50%;
+        }
+      }
     }
+  }
 }
