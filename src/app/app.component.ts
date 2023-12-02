@@ -36,6 +36,9 @@ ngOnInit(): void {
     console.log([...this.userData, completeData])
     this.userData = [...this.userData, completeData];
     this.dataHeaders = [...Object.keys(completeData),"actions"];
+    this.personaldetail=true;
+    this.professionaldetail=false; 
+    this.identitydetail=false;
     // this.basicForm.form.value.reset();
   }
 
