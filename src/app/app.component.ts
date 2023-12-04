@@ -20,6 +20,7 @@ export class AppComponent implements OnInit{
   personaldetail:boolean=true;
   professionaldetail=false;
   identitydetail=false;
+  isLoading=false; 
 
 
   constructor(
@@ -33,13 +34,21 @@ ngOnInit(): void {
 
   getData(data:NgForm) {
     const completeData = {...this.tempData, ...data}
-    console.log([...this.userData, completeData])
     this.userData = [...this.userData, completeData];
     this.dataHeaders = [...Object.keys(completeData),"actions"];
     this.personaldetail=true;
     this.professionaldetail=false; 
     this.identitydetail=false;
+    this.showLoader()
     // this.basicForm.form.value.reset();
+  }
+
+  showLoader(){
+    this.isLoading = true;
+
+    setTimeout(() => {  //This function is a representation that API will take 500 ms time
+      this.isLoading = false;
+    },500)
   }
 
   // getData(data:NgForm) {
